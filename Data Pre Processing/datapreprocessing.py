@@ -16,10 +16,8 @@ imputer=imputer.fit(x[:,1:3]) #taking the column number one and two
 x[:,1:3]=imputer.transform(x[:,1:3]) #transforming the column number
 
 #Encoding categorical data
-
 from sklearn.preprocessing import LabelEncoder,OneHotEncoder
 from sklearn.compose import ColumnTransformer
-
 labelEncoderCountry=LabelEncoder()
 x[:,0]=labelEncoderCountry.fit_transform(x[:,0]) #encoding the data of column1=country
 #creating the dummy variable to change the order
