@@ -30,7 +30,9 @@ x=columnTransformer.fit_transform(x) #fitting and transforming the datasetx
 labelEncoderPurchase=LabelEncoder()
 y=labelEncoderPurchase.fit_transform(y)
 
-
+#splitting the dataset into training set and test set
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=0) #20 percent of the dataset will go to train set and rest will go to test set
 
 
 
