@@ -37,15 +37,14 @@ y_prediction=regressor.predict(x_test)
 
 
 #Building the model with backward elimination
-import statsmodels.formula.api as sm
-import statsmodels.regression.linear_model as sm2
+import statsmodels.api as sm
 
 x=np.append(arr=np.ones((50, 1)).astype(int), values=x,axis=1)
 x_optimal=x[:,[0,1,2,3,4,5]]
 x_optimal = np.array(x_optimal, dtype=float)
-regressor_OLS=sm2.OLS(endog=y, exog=x_optimal).fit()
+regressor_OLS=sm.OLS(endog=y, exog=x_optimal).fit()
 
-
+regressor_OLS.summary()
   
 
 
