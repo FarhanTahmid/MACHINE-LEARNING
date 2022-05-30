@@ -36,8 +36,35 @@ regressor.fit(x_train, y_train)
 y_prediction=regressor.predict(x_test)
 
 
+
 #Building the model with backward elimination
 import statsmodels.api as sm
+
+'''
+AUTOMATIC BACKWAR ELIMINATION MODEL
+'''
+def backwardElimination(x, sl):
+    numberVariables = len(x[0])
+    for i in range(0, numberVariables):
+        regressor_OLS = sm.OLS(y, x).fit()
+        maxVar = max(regressor_OLS.pvalues).astype(float)
+        if maxVar > sl:
+            for j in range(0, numberVariables - i):
+                if (regressor_OLS.pvalues[j].astype(float) == maxVar):
+                    x = np.delete(x, j, 1)
+    regressor_OLS.summary()
+    return x
+ 
+SL = 0.05
+x_optimal = x[:, [0, 1, 2, 3, 4, 5]]
+x_optimal = np.array(x_optimal, dtype=float)
+x_Modeled = backwardElimination(x_optimal, SL)
+
+
+
+
+'''
+MANUAL BACKWARD ELIMINATION
 
 x=np.append(arr=np.ones((50, 1)).astype(int), values=x,axis=1)
 x_optimal=x[:,[0,1,2,3,4,5]]
@@ -67,6 +94,13 @@ regressor_OLS=sm.OLS(endog=y, exog=x_optimal).fit()
 
 regressor_OLS.summary()
 
+#removing the highest p value
+x_optimal=x[:,[0,3]]
+x_optimal = np.array(x_optimal, dtype=float)
+regressor_OLS=sm.OLS(endog=y, exog=x_optimal).fit()
+
+regressor_OLS.summary()
+'''
 
 
 
