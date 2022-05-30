@@ -61,11 +61,12 @@ regressor_OLS=sm.OLS(endog=y, exog=x_optimal).fit()
 regressor_OLS.summary()
 
 #removing the highest p value
-x_optimal=x[:,[0,4,5]]
+x_optimal=x[:,[0,3,5]]
 x_optimal = np.array(x_optimal, dtype=float)
 regressor_OLS=sm.OLS(endog=y, exog=x_optimal).fit()
 
 regressor_OLS.summary()
+
 
 
 
