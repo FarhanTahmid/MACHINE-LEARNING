@@ -41,7 +41,7 @@ y_prediction=regressor.predict(x_test)
 import statsmodels.api as sm
 
 '''
-AUTOMATIC BACKWAR ELIMINATION MODEL
+AUTOMATIC BACKWARD ELIMINATION MODEL
 '''
 def backwardElimination(x, sl):
     numberVariables = len(x[0])
