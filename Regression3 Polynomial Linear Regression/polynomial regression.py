@@ -41,6 +41,8 @@ plt.ylabel("Salary")
 plt.show()
 
 #Visulaizing polynomial linear regression
+xgrid=np.arange(min(x),max(x),0.1)
+xgrid=xgrid.reshape((len(xgrid),1))
 plt.scatter(x, y,color='red')
 plt.plot(x,linearRegressor2.predict(polynomialRegressor.fit_transform(x)),color='blue')
 plt.title("Truth or Bluff (Linear regression model)")
