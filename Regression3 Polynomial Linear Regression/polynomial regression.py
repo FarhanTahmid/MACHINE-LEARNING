@@ -32,6 +32,24 @@ xPolynomial=polynomialRegressor.fit_transform(x)
 linearRegressor2=LinearRegression()  #making this linear regression object to fit our polynomial x in to the linear regressor model
 linearRegressor2.fit(xPolynomial, y)
 
+#Visulaizing linear regression
+plt.scatter(x, y,color='red')
+plt.plot(x,linearRegressor.predict(x),color='blue')
+plt.title("Truth or Bluff (Linear regression model)")
+plt.xlabel("Position level")
+plt.ylabel("Salary")
+plt.show()
+
+#Visulaizing polynomial linear regression
+plt.scatter(x, y,color='red')
+plt.plot(x,linearRegressor2.predict(polynomialRegressor.fit_transform(x)),color='blue')
+plt.title("Truth or Bluff (Linear regression model)")
+plt.xlabel("Position level")
+plt.ylabel("Salary")
+plt.show()
+
+
+
 
 
 
