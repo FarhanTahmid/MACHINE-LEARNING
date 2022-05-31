@@ -27,7 +27,7 @@ linearRegressor.fit(x, y)
 #fitting polynomial regression in dataset
 #polynomial regression model
 from sklearn.preprocessing import PolynomialFeatures
-polynomialRegressor=PolynomialFeatures(degree=2)
+polynomialRegressor=PolynomialFeatures(degree=4)
 xPolynomial=polynomialRegressor.fit_transform(x)
 linearRegressor2=LinearRegression()  #making this linear regression object to fit our polynomial x in to the linear regressor model
 linearRegressor2.fit(xPolynomial, y)
