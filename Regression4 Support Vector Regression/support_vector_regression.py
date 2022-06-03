@@ -13,7 +13,7 @@ import pandas as pd
 # Importing the dataset
 dataset = pd.read_csv('Position_Salaries.csv')
 x = dataset.iloc[:, 1:2].values
-y = dataset.iloc[:, -1].values
+y = dataset.iloc[:, 2:3].values 
 
 # Splitting the dataset into the Training set and Test set
 '''
@@ -23,6 +23,13 @@ from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 0)
 
 '''
+#Feature Scaling
+from sklearn.preprocessing import StandardScaler
+scaleX=StandardScaler()
+scaleY=StandardScaler()
+x=scaleX.fit_transform(x)
+y=scaleY.fit_transform(y)
+
 
 #fitting the SVR in dataset
 from sklearn.svm import SVR
@@ -31,7 +38,7 @@ regressor.fit(x,y)
 
 
 #predicting the result with regression
-yPrediction=regressor.predict([[6.5]])
+yPrediction=scaleY.inverse_transform(np.array(regressor.predict(scaleX.transform([[6.5]]))))
 
 
 #Visulaizing the Support vector regression results
